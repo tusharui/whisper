@@ -19,8 +19,8 @@ export const protectRoute = [
 
             next()
         } catch (error) {
-            console.error("error in protectroute middleware", error);
-            res.status(500).json({ message: "internal server error" });
+            res.status(500);
+            next(error);
         }
     },
 ];
