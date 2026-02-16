@@ -24,10 +24,10 @@ app.use("/api/users",userRoutes)
 app.use(errorHandler)
 
 if(process.env.NODE_ENV === "production" ){
-  app.use(express.static(path.join(__dirname,"../../app/web/dist")))
+  app.use(express.static("/app/web/dist"))
 
   app.get("/{*any}",(req,res)=>{
-    res.sendFile(path.resolve(__dirname,"../../web/dist/index.html"))
+    res.sendFile("/app/web/dist/index.html")
   })
 }
 
