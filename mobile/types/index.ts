@@ -12,6 +12,8 @@ export interface MessageSender {
   avatar: string;
 }
 
+export type MessageStatus = "sending" | "sent" | "delivered" | "read" | "failed";
+
 export interface Message {
   _id: string;
   chat: string;
@@ -19,6 +21,15 @@ export interface Message {
   text: string;
   createdAt: string;
   updatedAt: string;
+  status?: MessageStatus;
+  replyTo?: string;
+  reactions?: MessageReaction[];
+}
+
+export interface MessageReaction {
+  emoji: string;
+  userId: string;
+  createdAt: string;
 }
 
 export interface ChatLastMessage {
@@ -34,4 +45,5 @@ export interface Chat {
   lastMessage: ChatLastMessage | null;
   lastMessageAt: string;
   createdAt: string;
+  unreadCount?: number;
 }
